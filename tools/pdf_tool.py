@@ -35,7 +35,7 @@ def PDFSummaryTool(prompt: str) -> str:
         return "Could not extract any text from the PDF."
 
     #Summarize using Gemini 
-    model = GenerativeModel("gemini-2.0-flash-001")
+    model = GenerativeModel("gemini-2.0-flash")
     result = model.generate_content(
         f"Summarize this document:\n\n{text[:4000]}",
         generation_config={
