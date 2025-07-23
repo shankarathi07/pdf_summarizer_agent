@@ -1,0 +1,4 @@
+langchain
+vertexai
+requests
+pymupdf

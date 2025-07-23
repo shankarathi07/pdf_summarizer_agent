@@ -1,0 +1,6 @@
+agent:
+  name: pdf-summarizer-agent
+  description: Summarizes a PDF from a given URL and posts the summary to Slack.
+  tools:
+    - tools.pdf_tool.PDFSummaryTool
+    - tools.slack_tool.SlackNotifierTool
