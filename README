@@ -1,1 +1,77 @@
-Here is a README for this repository. We are testing the recently announced Gemini CLI GitHub Actions.
+# PDF Summarizer Agent
+
+This repository contains a simple agent that can summarize a PDF from a given URL and post the summary to a Slack channel.
+
+This project is designed to be easy to understand and run, with a focus on clear, readable, and well-documented code.
+
+## Features
+
+- Extracts a PDF URL from a user prompt.
+- Downloads the PDF and extracts its text content.
+- Uses Google's Gemini model to generate a concise summary.
+- Posts the summary to a configured Slack channel.
+
+## Getting Started
+
+Follow these instructions to get the project set up and running on your local machine.
+
+### Prerequisites
+
+- Python 3.9+
+- A Google Cloud Platform (GCP) project with the Vertex AI API enabled.
+- A Slack workspace and a webhook URL for a channel.
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/example/repo.git # Replace with the actual repo URL
+    cd repo-directory
+    ```
+
+2.  **Create a virtual environment:**
+    It's recommended to use a virtual environment to manage dependencies.
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+3.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Set up your environment variables:**
+    This project uses a `.env` file to manage secret keys and configuration. Create a `.env` file in the root of the project by copying the example file:
+    ```bash
+    cp .env.example .env
+    ```
+    Now, open the `.env` file and add your specific credentials:
+    ```
+    # Google Cloud Project ID
+    GCP_PROJECT_ID=your_gcp_project_id
+
+    # Slack Webhook URL
+    SLACK_WEBHOOK_URL=your_slack_webhook_url
+    ```
+
+### Running the Agent
+
+To run the agent, use the `main.py` script and provide a prompt as a command-line argument. The prompt must contain a URL to a PDF file.
+
+**Example:**
+```bash
+python main.py "Please summarize the PDF available at https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf for me."
+```
+
+The script will print the summary to the console and also post it to the configured Slack channel.
+
+## Code Structure
+
+-   `main.py`: The main entry point for the application. It handles command-line arguments and orchestrates the agent's workflow.
+-   `tools/`: This directory contains the individual tools that the agent uses.
+    -   `pdf_tool.py`: A tool for summarizing PDFs from URLs.
+    -   `slack_tool.py`: A tool for sending messages to Slack.
+-   `requirements.txt`: A list of the Python packages required to run the project.
+-   `.env.example`: An example file showing the required environment variables.
+-   `agent.yaml`: A configuration file defining the agent and its tools.
